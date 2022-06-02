@@ -186,8 +186,8 @@ namespace eTickets.Data
                             Description = "This is the Race movie description",
                             Price = 39.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-5),
+                            StartDate = DateTime.Now.AddMonths(2),
+                            EndDate = DateTime.Now.AddMonths(4),
                             CinemaId = 1,
                             ProducerId = 2,
                             MovieCategory = MovieCategory.Documentary
