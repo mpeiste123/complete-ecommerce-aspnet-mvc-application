@@ -35,5 +35,54 @@ namespace eTickets.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        //Get Cinemas/Details/1
+        public async Task<IActionResult> Details(int id)
+        {
+            var cinemaDetails = await  _service.GetByIdAsync(id);
+            if (cinemaDetails == null) return View("NotFound");
+
+            return View(cinemaDetails);
+
+        }
+
+        //Get Cinemas/Edit/1
+        public async Task<IActionResult> Edit(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null) return View("NotFound");
+
+            return View(cinemaDetails);
+
+        }
+        [HttpPost]
+        //We need to pass the Id parameter in the url
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Logo, Name, Description")] Cinema cinema)
+        {
+            if (!ModelState.IsValid) return View(cinema);
+            await _service.UpdateAsync(id, cinema);
+            return RedirectToAction(nameof(Index));
+
+        }
+        //Get Cinemas/Delete/1
+        public async Task<IActionResult> Delete(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null) return View("NotFound");
+
+            return View(cinemaDetails);
+
+        }
+        [HttpPost, ActionName("Delete")]
+        //We need to pass the Id parameter in the url
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+
+        }
+
     }
 }
