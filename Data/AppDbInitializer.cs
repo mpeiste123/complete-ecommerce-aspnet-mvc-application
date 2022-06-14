@@ -1,5 +1,6 @@
 ﻿using eTickets.Models;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace eTickets.Data
     {
         public static  void Seed(IApplicationBuilder applicationBuilder)
         {
+          
             //An application services scope
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
