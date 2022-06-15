@@ -17,7 +17,28 @@ namespace eTickets.Data.Cart
         {
             _context = context;
         }
+        public void AddItemToCart(Movie movie)
+        {
+            var shoppingCartItem = _context.ShoppingCartItems.FirstOrDefault(n=>n.Movie.Id == movie.Id &&
+            n.ShoppingCartId == ShoppingCardId);
 
+            if (shoppingCartItem == null)
+            {
+                shoppingCartItem = new ShoppingCartItem()
+                {
+                    ShoppingCartId = ShoppingCardId,
+                    Movie = movie,
+                    Amount = 1
+                };
+
+                _context.ShoppingCartItems.Add(shoppingCartItem);
+
+            }else
+            {
+                shoppingCartItem.Amount++;
+            }
+            _context.SaveChanges();
+        }
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
             return ShoppingCartItems ?? (ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCardId).Include(n =>n.Movie).ToList());
@@ -26,7 +47,5 @@ namespace eTickets.Data.Cart
 
         public double GetShoppingCartTotal()=> _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCardId)
                         .Select(n => n.Movie.Price * n.Amount).Sum();
-       
-
     }
 }
