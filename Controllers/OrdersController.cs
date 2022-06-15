@@ -1,4 +1,5 @@
 ﻿using eTickets.Data.Cart;
+using eTickets.Data.Services;
 using eTickets.Data.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,16 +11,16 @@ namespace eTickets.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly IMovieService _movieService;
+        private readonly IMoviesService _movieService;
         private readonly ShoppingCart _shoppingCart;
 
 
-        public OrdersController(IMovieService moviesService, ShoppingCart shoppingCart)
+        public OrdersController(IMoviesService moviesService, ShoppingCart shoppingCart)
         {
             _movieService = moviesService;
             _shoppingCart = shoppingCart;
         }
-        public IActionResult Index()
+        public IActionResult ShoppingCart()
         {
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
