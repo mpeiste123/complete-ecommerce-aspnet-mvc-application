@@ -37,7 +37,7 @@
                             }
                         </ul>
                     </td>
-                    <td class="align-middle">@order.OrderItems.Select(m=>m.Amount).Sum().ToString("c")</td>
+                    <td class="align-middle">@order.OrderItems.Select(m=>m.Movie.Price * m.Amount).Sum().ToString("c")</td>
                     <td class="align-middle"> - </td>
 
 
