@@ -19,10 +19,10 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                     <li class="nav-item">
-                         <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index"><i class="bi bi-film"></i> Movies</a>
-                     </li> 
-                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index"><i class="bi bi-film"></i> Movies</a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bi-film bi-gear">
@@ -35,26 +35,30 @@
                                 <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
                                 <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
 
-                            </div>    
+                            </div>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0" asp-controller="Movies" asp-action="Filter" style="padding-right:25px;">
-                        <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." /> 
+                        <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." />
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
                     <ul class="navbar-nav">
                         <li>
-                        @await Component.InvokeAsync("ShoppingCartSummary") 
+                            @await Component.InvokeAsync("ShoppingCartSummary")
                         </li>
                     </ul>
 
-                    <a class= "btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
+                    <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
                         <i class="bi bi-box-arrow-in-right"></i> Log in
+                    </a>
+
+                    <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register">
+                        <i class="bi bi-person-plus"></i> Register
                     </a>
                     @*User Profile Section*@
                     <div class="dropdown">
                         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
-                        aria-expanded="false">
+                                aria-expanded="false">
                             <i class="bi bi-person-badge"></i> Hello User
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="profile-btn">
