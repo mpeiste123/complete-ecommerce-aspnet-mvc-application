@@ -11,7 +11,6 @@ namespace eTickets.Data.ViewModels
         [Display(Name = "Email address")]
         [Required(ErrorMessage = "Email Address is required")]
         public string EmailAddress { get; set; }
-        [Display(Name = "Email address")]
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
